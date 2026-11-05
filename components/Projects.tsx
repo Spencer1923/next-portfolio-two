@@ -13,6 +13,7 @@ const linkClass = "inline-flex min-h-11 items-center gap-2 font-mono text-xs upp
 export default function Projects() {
   const reduce = useReducedMotion(); // true if the visitor wants less motion
   const [hovered, setHovered] = useState<number | null>(null); // which row the mouse is on (null = none)
+  const [overLinks, setOverLinks] = useState(false); // true while the mouse is on the Live / GitHub links
 
   // The raw mouse position, updated on every move
   const mouseX = useMotionValue(0);
@@ -85,7 +86,11 @@ export default function Projects() {
             </div>
 
             {/* Links. col-start-2 = sits under the info on phones. md:col-start-auto = own column on desktop. */}
-            <div className="col-start-2 mt-3 flex gap-5 md:col-start-auto md:mt-0">
+            <div
+              className="col-start-2 mt-3 flex gap-5 md:col-start-auto md:mt-0"
+              // While the mouse is over the links, hide the preview so it never covers them
+              onPointerEnter={(e) => e.pointerType === "mouse" && setOverLinks(true)}
+              onPointerLeave={() => setOverLinks(false)}>
               {project.live && (
                 <a href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`${project.name} live site (opens in a new tab)`} className={linkClass}>
                   Live <LinkMark kind="external" />
@@ -103,27 +108,28 @@ export default function Projects() {
       {/* Floating preview. fixed = placed against the screen, pointer-events-none = never blocks clicks.
           It only exists while a row is hovered (so the server never draws it, which avoids the mismatch). */}
       <AnimatePresence>
-        {hovered !== null && (
-          <motion.div
-            key="preview" // one frame that stays while you move between rows
-            aria-hidden="true"
-            className="pointer-events-none fixed left-0 top-0 z-30 w-[360px]"
-            style={{ x: previewX, y: previewY }} // follows the cursor with the glide
-            exit={{ opacity: 0, transition: { duration: 0.15 } }} // quick fade out when you leave the list
-          >
+        {hovered !== null &&
+          !overLinks && ( // show only while hovering a row AND not over its links
             <motion.div
-              key={hovered} // new key per row = the wipe plays again for each project
-              className="absolute left-0 top-0 w-full -translate-y-1/2" // centered on the cursor's height
-              initial={reduce ? false : { clipPath: "inset(0 0 100% 0)" }} // fully hidden
-              animate={{ clipPath: "inset(0 0 0% 0)" }} // wipes open from top to bottom
-              transition={{ duration: 0.35, ease: "easeOut" }}>
-              {/* opacity-50 = see-through, so the rows behind stay readable */}
-              <div className="opacity-50">
-                <ProjectImage name={site.projects[hovered].name} image={site.projects[hovered].image} />
-              </div>
+              key="preview" // one frame that stays while you move between rows
+              aria-hidden="true"
+              className="pointer-events-none fixed left-0 top-0 z-30 w-[360px]"
+              style={{ x: previewX, y: previewY }} // follows the cursor with the glide
+              exit={{ opacity: 0, transition: { duration: 0.15 } }} // quick fade out when you leave the list
+            >
+              <motion.div
+                key={hovered} // new key per row = the wipe plays again for each project
+                className="absolute left-0 top-0 w-full -translate-y-1/2" // centered on the cursor's height
+                initial={reduce ? false : { clipPath: "inset(0 0 100% 0)" }} // fully hidden
+                animate={{ clipPath: "inset(0 0 0% 0)" }} // wipes open from top to bottom
+                transition={{ duration: 0.35, ease: "easeOut" }}>
+                {/* opacity-50 = see-through, so the rows behind stay readable */}
+                <div className="opacity-50">
+                  <ProjectImage name={site.projects[hovered].name} image={site.projects[hovered].image} />
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
+          )}
       </AnimatePresence>
     </Section>
   );

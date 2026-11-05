@@ -32,9 +32,14 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" }, // tells X to show the big image card
 };
 
+// Runs before the page appears: if the visitor picked light last time, switch to it immediately (prevents a dark flash)
+const themeScript = `try{if(localStorage.getItem("theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}`;
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${plexMono.variable} h-full antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body // Adds both font variables to the page. "antialiased" makes text look smoother.
         className={`${spaceGrotesk.variable} ${plexMono.variable} antialiased`}>
         {/* The rail is fixed, so main gets left padding equal to the rail width to avoid sitting under it */}

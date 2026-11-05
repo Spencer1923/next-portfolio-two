@@ -4,15 +4,15 @@ const email = "spencersamra@gmail.com"; // placeholder: your real email, used by
 export const site = {
   monogram: "SS", // placeholder: your initials, shown at the top of the rail
   name: "Spencer Samra", // placeholder: your full name, shown big in the hero
-  description: "Web developer building responsive, user-focused websites.", // placeholder: shown in Google and share cards
+  description: "Full-stack web developer building fast, SEO-ready websites and e-commerce stores.", // placeholder: shown in Google and share cards
   url: "https://your-domain.com", // placeholder: change to your real site address after you deploy
   copyrightYear: 2026, // used in the footer © line
   email,
 
   hero: {
-    role: "Web developer · Next.js", // small mono label under your name
-    statement: "I build fast, precise websites that feel made by hand.", // placeholder headline
-    status: "Open to work", // describes the pulsing dot (shown on hover and read by screen readers)
+    role: "Web developer · SEO", // small mono label under your name
+    statement: "Full-stack web developer with a marketing-aware approach to SEO and e-commerce.", // placeholder headline
+    status: "Open to new opportunities", // describes the pulsing dot (shown on hover and read by screen readers)
   },
 
   // Your contact links. Edit here and the hero buttons and Contact rows update.
@@ -21,24 +21,24 @@ export const site = {
   links: [
     { label: "Email", href: `mailto:${email}`, mark: "arrow", value: email },
     { label: "GitHub", href: "https://github.com/Spencer1923", mark: "external", external: true, value: "Spencer1923" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/your-handle", mark: "external", external: true, value: "your-handle" }, // placeholder
-    { label: "Résumé", href: "/resume.pdf", mark: "download", download: true, value: "Download PDF" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/spencer-samra", mark: "external", external: true, value: "Spencer Samra" }, // placeholder
   ],
 
   about: {
     // Bio paragraphs: add, remove, or edit freely (placeholders)
     paragraphs: [
-      "I'm a web developer who cares about fast, clean, carefully built websites. Placeholder: replace this with your own story.",
-      "I build with Next.js, TypeScript, and Tailwind, taking ideas from sketch to finished interface. Placeholder: say how you work.",
-      "Outside of code, placeholder: add one personal line so people remember you.",
+      "I'm a full-stack web developer looking for a role where I can contribute from day one while gaining real-world experience and continuing to grow my skills.",
+      "I build with React, Next.js, TypeScript, and Tailwind CSS, on a foundation of JavaScript, HTML, CSS, and Java. My focus is on e-commerce and SEO-friendly websites that are fast, responsive, and built to be maintained.",
+      "I continue to learn new tools and approaches, and put them to work in real projects, from an NFL site and an online store to a car dealership platform and a more.",
     ],
 
     // Fact sheet rows: label on the left, value on the right (placeholders)
     facts: [
-      { label: "Frontend", value: "Next.js, React, TypeScript, Tailwind CSS" },
-      { label: "Motion", value: "Framer Motion" },
+      { label: "Languages", value: "JavaScript, TypeScript, Java, HTML, CSS" },
+      { label: "Frontend", value: "React, Next.js, Tailwind CSS, Framer Motion" },
+      { label: "Backend", value: "Node.js, REST APIs" },
       { label: "Tooling", value: "Git, GitHub, VS Code, ESLint" },
-      { label: "Focus", value: "Performance, responsive layouts, accessibility" },
+      { label: "Focus", value: "E-commerce, SEO, responsive design, performance" },
     ],
   },
 
@@ -46,17 +46,44 @@ export const site = {
   experience: [
     {
       role: "Frontend Developer", // placeholder
-      company: "Company Name", // placeholder
-      start: "2025",
+      company: "Code Haven Web Solutions", // placeholder
+      start: "2024",
       end: null,
-      bullets: ["Placeholder: one short line about something you built or improved.", "Placeholder: another line, ideally with a result or number."],
+      bullets: [
+        "Designed and developed custom, responsive websites for small businesses, prioritizing performance, SEO, and mobile usability using clean HTML, CSS, and JavaScript.",
+        "Managed full project lifecycle, from client communication and iterative revisions to post-launch support, ensuring tailored solutions and seamless user experiences.",
+      ],
     },
     {
       role: "Freelance Web Developer", // placeholder
       company: "Self-employed", // placeholder
       start: "2023",
-      end: "2025",
-      bullets: ["Placeholder: built websites for small businesses with Next.js.", "Placeholder: handled design, development, and launch end to end."],
+      end: "2024",
+      bullets: ["Building, designing & improving websites/applications."],
+    },
+    {
+      type: "education", // work, education, or certification (decides the small tag on the entry)
+      role: "York University", // for school entries, the school name goes in "role"
+      company: "", // left empty: nothing shows after the dot
+      start: "Sept 2021",
+      end: "May 2026", // null = Present
+      bullets: ["Completed two years of Computer Science then switched to and graduated in Digital Media."],
+    },
+    {
+      type: "certification",
+      role: "Responsive Web Design (V8)",
+      company: "freeCodeCamp", // the issuer
+      start: "", // empty = no dates shown (certifications only show their tag)
+      end: "",
+      bullets: ["Completed coursework covering HTML, CSS, Flexbox, CSS Grid, and accessibility."],
+    },
+    {
+      type: "certification",
+      role: "JavaScript Algorithms and Data Structures (V8)",
+      company: "freeCodeCamp",
+      start: "",
+      end: "",
+      bullets: ["Completed coursework covering ES6, algorithm design, and data structures."],
     },
   ],
 
@@ -65,35 +92,54 @@ export const site = {
   projects: [
     {
       name: "SSports",
-      description: "NFL fan site powered by the ESPN API. Placeholder: say what a visitor can do on it.",
-      tags: ["Next.js", "Tailwind v4", "ESPN API"],
+      description: "  Full-stack NFL site with live scores, standings, stats, injuries, depth charts, and custom blog, built with Next.js and ESPN API.",
+      tags: ["Next.js", "Tailwind v4", "ESPN API", "React"],
       live: "https://s-sports.netlify.app/", // add the deployed URL here
       github: "https://github.com/Spencer1923/SSports",
-      image: "", // later: "/projects/ssports.png" (file goes in public/projects/)
+      image: "/projects/ss-sports.jpg", // later: "/projects/ssports.png" (file goes in public/projects/)
     },
     {
       name: "Matrix Market",
-      description: "E-commerce site for TVs, speakers, and video games. Placeholder: add more detail.",
-      tags: ["Next.js", "Tailwind"],
-      live: "",
+      description: "E-commerce tech site using Next.js, Tailwind, Supabase, Stripe with secure checkout and admin dashboard.",
+      tags: ["Next.js", "Tailwind", "Supabase", "Stripe", "Typescript"],
+      live: "https://the-matrix-market.netlify.app/",
       github: "https://github.com/Spencer1923/matrix-market", // placeholder: check the real repo name
-      image: "",
+      image: "/projects/matrix-market.jpg",
     },
     {
       name: "Autobahn Garage",
-      description: "Car dealership site with inventory filters, detail pages, and a financing calculator.",
-      tags: ["Next.js", "Tailwind"],
-      live: "",
+      description: "Dealership website with search and filter, vehicle details page for any car and estimates monthly payments with a financing calculator.",
+      tags: ["Next.js", "Tailwind", "Tailwind CSS", "Typescript"],
+      live: "https://autobahn-garage.netlify.app/",
       github: "https://github.com/Spencer1923/autobahn-garage", // placeholder: check the real repo name
-      image: "",
+      image: "/projects/autobahn-garage.jpg",
     },
+
     {
-      name: "Next Rep",
-      description: "Online personal training and coaching platform. Currently in progress.",
-      tags: ["Next.js", "Tailwind"],
-      live: "",
-      github: "https://github.com/Spencer1923/next-rep", // placeholder: check the real repo name
-      image: "",
+      name: "Weather Web App",
+      description: "Immersive Weather Web App using JavaScript Open Weather API and Max 9.",
+      tags: ["JavaScript", "Open Weather API", "Max 9"],
+      live: "https://datt3074weatherwebapp.netlify.app",
+      github: "https://github.com/Spencer1923/Weather-Web-App", // placeholder: check the real repo name
+      image: "/projects/weather-app.jpg",
+    },
+
+    {
+      name: "Web Page for Client",
+      description: "Mobile first business page for client prioritizing SEO and CTAs.",
+      tags: ["HTML", "CSS", "JavaScript", "SEO"],
+      live: "https://dreamzdirectsolutions.com",
+      github: "https://github.com/Spencer1923", // placeholder: check the real repo name
+      image: "/projects/dreamz-direct.jpg",
+    },
+
+    {
+      name: "Guess It!",
+      description: "Multiplayer Guessing Game built with Java and Android Studio with different difficulty modes and live leaderboards.",
+      tags: ["Java", "Android Studio"],
+      live: "https://drive.google.com/drive/folders/10BygrOvwYWA8K3GatF69hsKFHPEEpjjK?usp=share_link",
+      github: "https://github.com/Spencer1923/Guess-It", // placeholder: check the real repo name
+      image: "/projects/guess-it.jpg",
     },
   ],
 

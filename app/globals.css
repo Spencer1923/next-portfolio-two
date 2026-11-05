@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Lets us write light:hidden etc. It applies when the page is in light mode. */
+@custom-variant light (&:where([data-theme="light"] *));
+
 /* Tells Tailwind which fonts to use for `font-sans` and `font-mono` */
 /* "inline" makes Tailwind read the font variables where they're used */
 @theme inline {
@@ -15,12 +18,14 @@
   --color-line: #1f1f24; /* hairline borders */
   --color-bone: #ece8df; /* main text (warm white) */
   --color-muted: #7a7a85; /* secondary text */
+  --color-label: color-mix(in srgb, var(--color-muted), var(--color-bone) 50%); /* a bit brighter than muted: used for section headers. Raise 35% for brighter, lower for dimmer. */
   --color-accent: #2f6bff; /* the ONE accent color (blue) */
 }
 
 html {
   scroll-behavior: smooth; /* smooth scrolling for anchor links */
   background: var(--color-ink);
+  color-scheme: dark; /* default theme is dark */
 }
 
 body {
@@ -54,4 +59,15 @@ body::after {
   :root {
     --rail-w: 4rem;
   }
+}
+
+/* LIGHT MODE: same token names, new values. Applied when <html> has data-theme="light". */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-ink: #f3f0e8; /* page background (warm paper) */
+  --color-panel: #ebe7dc; /* card / placeholder background */
+  --color-line: #dcd7ca; /* hairline borders */
+  --color-bone: #0a0a0b; /* main text (near-black) */
+  --color-muted: #5c5c66; /* secondary text, darker than in dark mode so it stays readable on paper */
+  --color-accent: #2459e8; /* your blue, a touch darker so small blue text stays readable on paper */
 }
