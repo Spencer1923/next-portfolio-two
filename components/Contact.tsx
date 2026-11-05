@@ -28,8 +28,7 @@ export default function Contact() {
               <a
                 href={link.href}
                 target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noopener noreferrer" : undefined}
-                download={link.download ? true : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}              
                 aria-label={`${link.label}: ${link.value}`}
                 className="min-w-0 break-words text-lg text-bone transition-colors after:absolute after:inset-0 group-hover:text-accent focus-visible:text-accent"
               >

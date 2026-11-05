@@ -55,8 +55,7 @@ export default function Hero() {
             <a
               href={link.href}
               target={link.external ? "_blank" : undefined}
-              rel={link.external ? "noopener noreferrer" : undefined}
-              download={link.download ? true : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}              
               // gap-2 moved into MagneticLabel below
               className="inline-flex min-h-11 items-center border border-muted/40 px-4 font-mono text-xs uppercase tracking-wider text-bone transition-colors hover:border-accent hover:text-accent focus-visible:border-accent focus-visible:text-accent">
               {/* MagneticLabel = the text and icon shift a bit extra (parallax) */}
