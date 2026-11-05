@@ -3,7 +3,7 @@ import RailNav from "@/components/RailNav";
 
 export default function Rail() {
   return (
-    // fixed = stays put while you scroll, inset-y-0 = full height, left-0 = left edge
+    // fixed = stays put while u scroll, inset-y-0 = full height, left-0 = left edge
     // z-40 = sits above the page content
     // bg-ink/40 = near-black at 40% opacity, backdrop-blur-md = blurs what's behind it
     // border-r border-line = the hairline on the right edge

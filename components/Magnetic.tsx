@@ -37,7 +37,7 @@ export default function Magnetic({ children, strength = 3, className = "" }: Pro
   }
 
   return (
-    // p-2 -m-2 = the field extends 8px past the button (so it reacts as you approach), with no layout change
+    // p-2 -m-2 = the field extends 8px past the button (so it reacts as u approach), with no layout change
     <div
       ref={areaRef}
       onPointerMove={handleMove}

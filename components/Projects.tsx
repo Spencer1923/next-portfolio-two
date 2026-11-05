@@ -62,7 +62,7 @@ export default function Projects() {
             className={`group grid grid-cols-[2.5rem_1fr] gap-x-4 border-b border-line py-8 transition-opacity duration-300 md:grid-cols-[3rem_1fr_auto] md:gap-x-8 ${
               hovered !== null && hovered !== i ? "opacity-40" : "opacity-100"
             }`}>
-            {/* Number like 01. Turns blue when you hover the row. */}
+            {/* Number like 01. Turns blue when u hover the row. */}
             <span className="pt-2 font-mono text-xs text-muted transition-colors group-hover:text-accent">{String(i + 1).padStart(2, "0")}</span>
 
             <div>
@@ -111,11 +111,11 @@ export default function Projects() {
         {hovered !== null &&
           !overLinks && ( // show only while hovering a row AND not over its links
             <motion.div
-              key="preview" // one frame that stays while you move between rows
+              key="preview" // one frame that stays while u move between rows
               aria-hidden="true"
               className="pointer-events-none fixed left-0 top-0 z-30 w-[360px]"
               style={{ x: previewX, y: previewY }} // follows the cursor with the glide
-              exit={{ opacity: 0, transition: { duration: 0.15 } }} // quick fade out when you leave the list
+              exit={{ opacity: 0, transition: { duration: 0.15 } }} // quick fade out when u leave the list
             >
               <motion.div
                 key={hovered} // new key per row = the wipe plays again for each project

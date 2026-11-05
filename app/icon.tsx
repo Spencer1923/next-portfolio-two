@@ -14,7 +14,7 @@ export default function Icon() {
           display: "flex", // needed so the text centers
           alignItems: "center",
           justifyContent: "center",
-          background: "#2f6bff", // your accent blue (if you change the accent in globals.css, change it here too)
+          background: "#2f6bff", // your accent blue (if u change the accent in globals.css, change it here too)
           color: "white",
           fontSize: 17,
           fontWeight: 700,

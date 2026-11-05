@@ -16,7 +16,7 @@ export default function Experience() {
           const dates = job.start ? `${job.start} — ${job.end ?? "Present"}` : ""; // no start = no dates
 
           return (
-            // group = lets the children react when you hover anywhere on this entry
+            // group = lets the children react when u hover anywhere on this entry
             // relative = lets the line and marker position themselves inside this entry
             // pl-8 = space on the left for the timeline, pb-12 = space between jobs
             <li key={`${job.role}-${job.company}-${job.start}`} className="group relative pb-12 pl-8 last:pb-0">
@@ -51,7 +51,7 @@ export default function Experience() {
                 {job.company && <span className="text-muted"> · {job.company}</span>}
               </h3>
 
-              {/* Highlight bullets. They brighten when you hover the entry. */}
+              {/* Highlight bullets. They brighten when u hover the entry. */}
               <ul className="mt-4 space-y-2 text-muted transition-colors duration-200 group-hover:text-bone/80">
                 {job.bullets.map((bullet, i) => (
                   <li key={i} className="flex gap-3">

@@ -5,7 +5,7 @@ export const site = {
   monogram: "SS", // placeholder: your initials, shown at the top of the rail
   name: "Spencer Samra", // placeholder: your full name, shown big in the hero
   description: "Full-stack web developer building fast, SEO-ready websites and e-commerce stores.", // placeholder: shown in Google and share cards
-  url: "https://your-domain.com", // placeholder: change to your real site address after you deploy
+  url: "https://spencer-samra.netlify.app", // placeholder: change to your real site address after u deploy
   copyrightYear: 2026, // used in the footer © line
   email,
 

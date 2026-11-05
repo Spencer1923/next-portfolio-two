@@ -16,7 +16,7 @@ export default function ProjectImage({ name, image }: Props) {
           className="object-cover object-top"
         />
       ) : (
-        // Placeholder shown until you add a screenshot
+        // Placeholder shown until u add a screenshot
         <div className="flex h-full flex-col items-center justify-center gap-1 font-mono text-[11px] uppercase tracking-wider text-muted">
           <span>Screenshot</span>
           <span className="text-bone/60">{name}</span>
