@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Tells Tailwind which fonts to use for `font-sans` and `font-mono` */
+/* "inline" makes Tailwind read the font variables where they're used */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-plex-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* DESIGN TOKENS: change a color here and the whole site updates.
+   Tailwind turns each into classes: bg-ink, text-bone, text-accent... */
+@theme static {
+  --color-ink: #0a0a0b; /* page background */
+  --color-panel: #111114; /* card background */
+  --color-line: #1f1f24; /* hairline borders */
+  --color-bone: #ece8df; /* main text (warm white) */
+  --color-muted: #7a7a85; /* secondary text */
+  --color-accent: #2f6bff; /* the ONE accent color (blue) */
+}
+
+html {
+  scroll-behavior: smooth; /* smooth scrolling for anchor links */
+  background: var(--color-ink);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-bone);
+  overflow-x: hidden; /* prevents sideways scroll from glow effects later */
+}
+
+/* Blue text selection: a tiny detail that adds polish */
+::selection {
+  background: var(--color-accent);
+  color: white;
+}
+
+/* Film grain: a fixed noise texture over the whole site.
+   Raise opacity for more grain, lower it for less. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none; /* clicks pass straight through */
+  z-index: 100;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Rail width: narrow on phones, a bit wider on desktop */
+:root {
+  --rail-w: 3.5rem;
+}
+@media (min-width: 768px) {
+  :root {
+    --rail-w: 4rem;
+  }
 }
