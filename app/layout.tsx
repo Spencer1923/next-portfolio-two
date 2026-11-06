@@ -30,6 +30,7 @@ export const metadata: Metadata = {
   description: site.description, // shown in Google results
   openGraph: { title, description: site.description, type: "website" }, // share card (LinkedIn, iMessage, etc.)
   twitter: { card: "summary_large_image" }, // tells X to show the big image card
+  verification: { google: "MxqQo_I354HviOaO2gJHTOzCGOPBMYgXHhYT23KmmrU" },
 };
 
 // Runs before the page appears: if the visitor picked light last time, switch to it immediately (prevents a dark flash)
