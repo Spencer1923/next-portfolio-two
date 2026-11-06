@@ -32,8 +32,7 @@ export default function ThemeToggle() {
       aria-label="Toggle light and dark theme"
       title="Toggle theme"
       // h-11 = 44px tall (easy tap size)
-      className="inline-flex h-11 items-center px-4 text-muted transition-colors hover:text-accent focus-visible:text-accent"
-    >
+      className="inline-flex h-11 w-full items-center justify-center text-muted transition-colors hover:text-accent focus-visible:text-accent">
       {/* Dark mode shows the sun ("switch to light"). light:hidden hides it in light mode. */}
       <svg {...iconProps} className="light:hidden">
         <circle cx="12" cy="12" r="5" />

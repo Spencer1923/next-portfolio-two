@@ -1,5 +1,6 @@
 import { site } from "@/lib/site"; // "@/" means "start from the project root"
 import RailNav from "@/components/RailNav";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Rail() {
   return (
@@ -16,6 +17,9 @@ export default function Rail() {
       {/* my-auto pushes the numbers to the vertical middle of the rail */}
       {/* The numbers, with the active-section highlight (see RailNav.tsx) */}
       <RailNav />
+      {/* Theme toggle at the very bottom of the rail. The numbers above use my-auto,
+          so they stay centered in the free space and this sits at the bottom. */}
+      <ThemeToggle />
     </aside>
   );
 }

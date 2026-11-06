@@ -1,13 +1,12 @@
 import BackToTop from "@/components/BackToTop";
 import { site } from "@/lib/site";
-import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Footer() {
   return (
     // Same centered column as the sections, so everything lines up
     <footer className="mx-auto w-full max-w-7xl px-6 pb-10 pt-12 md:px-10 md:pb-12">
       {/* One box, two cells. Phones: stacked. Desktop (md+): copyright fills the space, TOP sits on the right. */}
-      <div className="grid border border-line font-mono text-xs uppercase tracking-wider text-muted md:grid-cols-[1fr_auto_auto]">
+      <div className="grid border border-line font-mono text-xs uppercase tracking-wider text-muted md:grid-cols-[1fr_auto]">
         {/* Cell 1: pulsing availability dot + copyright.
             title = tooltip on hover. sr-only = invisible text that screen readers read. */}
         <div className="flex min-h-11 items-center gap-3 border-b border-line px-4 md:border-b-0 md:border-r" title={site.hero.status}>
@@ -22,12 +21,7 @@ export default function Footer() {
           </span>
         </div>
 
-        {/* Cell 2: theme toggle */}
-        <div className="flex items-center border-b border-line md:border-b-0 md:border-r">
-          <ThemeToggle />
-        </div>
-
-        {/* Cell 3: back to top (scrambles on hover) */}
+        {/* Cell 2: back to top (scrambles on hover) */}
         <div className="flex items-center px-4">
           <BackToTop />
         </div>
