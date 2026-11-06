@@ -39,6 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <meta name="google-site-verification" content="MxqQo_I354HviOaO2gJHTOzCGOPBMYgXHhYT23KmmrU" />
       </head>
       <body // Adds both font variables to the page. "antialiased" makes text look smoother.
         className={`${spaceGrotesk.variable} ${plexMono.variable} antialiased`}>
