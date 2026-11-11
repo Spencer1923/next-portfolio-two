@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
+import SectionTitle from "@/components/SectionTitle";
 
 // next/font downloads the fonts at build time and serves them from your own site (fast, no layout jump)
 import { Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body // Adds both font variables to the page. "antialiased" makes text look smoother.
         className={`${spaceGrotesk.variable} ${plexMono.variable} antialiased`}>
         {/* The rail is fixed, so main gets left padding equal to the rail width to avoid sitting under it */}
+        <SectionTitle />
         <ScrollProgress />
         <Rail />
         <main className="pl-[var(--rail-w)]">
