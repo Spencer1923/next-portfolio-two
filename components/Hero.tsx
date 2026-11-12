@@ -1,6 +1,7 @@
 "use client"; // needs the browser for animations
 
-import { Fragment } from "react";
+import { Fragment, useRef, useState } from "react";
+import { useScramble } from "@/lib/useScramble"; // the same scramble effect as the rail and Copy button
 import { motion, useReducedMotion } from "framer-motion";
 import { site } from "@/lib/site";
 import LinkMark from "@/components/LinkMark";
@@ -9,6 +10,11 @@ import Magnetic, { MagneticLabel } from "@/components/Magnetic";
 export default function Hero() {
   // true if the visitor asked their device for less motion (we skip animations for them)
   const reduce = useReducedMotion();
+
+  const nameRef = useRef<HTMLSpanElement>(null); // points at the name so we can measure it
+  const [nameHover, setNameHover] = useState(false); // true while the mouse is on the name
+  const [nameWidth, setNameWidth] = useState<number | undefined>(undefined); // the name's normal width, saved during hover
+  const nameText = useScramble(site.name, nameHover, 900); // 900 = scramble speed in ms
 
   // Split the headline into words so each one can animate separately
   const words = site.hero.statement.split(" ");
@@ -24,7 +30,25 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }} // end fully visible in place
         transition={{ duration: 0.6, ease: "easeOut" }}>
         {/* clamp(min, flexible, max): 2.5rem (40px) on phones, grows with screen width, stops at 4rem (64px) */}
-        <h1 className="text-[clamp(2.5rem,6vw,4rem)] font-medium leading-none tracking-tight text-bone">{site.name}</h1>
+        <h1 className="text-[clamp(2.5rem,6vw,4rem)] font-medium leading-none tracking-tight text-bone">
+          {/* inline-block = the hover area is only as wide as the name, not the whole row */}
+          <span
+            ref={nameRef}
+            className="inline-block"
+            // minWidth = while scrambling, never get narrower than the real name (the letters have different widths)
+            style={{ minWidth: nameWidth }}
+            onPointerEnter={(e) => {
+              if (e.pointerType !== "mouse") return; // mouse only
+              setNameWidth(nameRef.current?.offsetWidth); // remember the normal width
+              setNameHover(true);
+            }}
+            onPointerLeave={() => {
+              setNameHover(false);
+              setNameWidth(undefined);
+            }}>
+            {nameText}
+          </span>
+        </h1>
         <p className="mt-4 font-mono text-xs uppercase tracking-wider text-muted">{site.hero.role}</p>
       </motion.div>
 
@@ -55,7 +79,7 @@ export default function Hero() {
             <a
               href={link.href}
               target={link.external ? "_blank" : undefined}
-              rel={link.external ? "noopener noreferrer" : undefined}              
+              rel={link.external ? "noopener noreferrer" : undefined}
               // gap-2 moved into MagneticLabel below
               className="inline-flex min-h-11 items-center border border-muted/40 px-4 font-mono text-xs uppercase tracking-wider text-bone transition-colors hover:border-accent hover:text-accent focus-visible:border-accent focus-visible:text-accent">
               {/* MagneticLabel = the text and icon shift a bit extra (parallax) */}

@@ -8,6 +8,7 @@ import SectionTitle from "@/components/SectionTitle";
 import { Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import Rail from "@/components/Rail";
 import ScrollProgress from "@/components/ScrollProgress";
+import ConsoleMessage from "@/components/ConsoleMessage";
 
 // Main font for headings and body text
 const spaceGrotesk = Space_Grotesk({
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
 const themeScript = `try{if(localStorage.getItem("theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}`;
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <meta name="google-site-verification" content="MxqQo_I354HviOaO2gJHTOzCGOPBMYgXHhYT23KmmrU" />
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body // Adds both font variables to the page. "antialiased" makes text look smoother.
         className={`${spaceGrotesk.variable} ${plexMono.variable} antialiased`}>
         {/* The rail is fixed, so main gets left padding equal to the rail width to avoid sitting under it */}
+        <ConsoleMessage />
         <SectionTitle />
         <ScrollProgress />
         <Rail />

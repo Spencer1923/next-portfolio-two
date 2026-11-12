@@ -1,6 +1,7 @@
 import Section from "@/components/Section";
 import { site } from "@/lib/site";
 
+
 export default function About() {
   return (
     // Section gives us the "01 / ABOUT" header and the page spacing

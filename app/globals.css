@@ -71,3 +71,18 @@ body::after {
   --color-muted: #5c5c66; /* secondary text, darker than in dark mode so it stays readable on paper */
   --color-accent: #2459e8; /* your blue, a touch darker so small blue text stays readable on paper */
 }
+
+/* THEME FADE: this class is added to <html> for a split second while switching dark/light.
+   It makes colors blend smoothly instead of flipping. 250ms = fade speed (change it in each place below). */
+html.theme-fade,
+html.theme-fade *,
+html.theme-fade *::before,
+html.theme-fade *::after {
+  transition:
+    background-color 250ms ease,
+    color 250ms ease,
+    border-color 250ms ease,
+    fill 250ms ease,
+    stroke 250ms ease,
+    box-shadow 250ms ease !important; /* !important = overrides the page's other transitions during the fade */
+}

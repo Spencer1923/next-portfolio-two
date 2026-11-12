@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useScramble } from "@/lib/useScramble";
+import Link from "next/link";
 
 type Props = { id: string; number: string; label: string; current: boolean }; // current = this section is on screen
 
@@ -10,8 +11,8 @@ export default function RailItem({ id, number, label, current }: Props) {
   const text = useScramble(label, active, 500); // 500 = scramble speed in ms (change here)
 
   return (
-    <a
-      href={`#${id}`}
+    <Link
+      href={`/#${id}`} // the leading "/" means "the home page", so it works from any page (and still scrolls normally on the home page)
       aria-label={label}
       // Mouse only: on phones a tap would leave the label stuck open
       onPointerEnter={(e) => e.pointerType === "mouse" && setActive(true)}
@@ -39,6 +40,6 @@ export default function RailItem({ id, number, label, current }: Props) {
         }`}>
         {text}
       </span>
-    </a>
+    </Link>
   );
 }

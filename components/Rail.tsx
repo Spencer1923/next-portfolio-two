@@ -1,6 +1,7 @@
 import { site } from "@/lib/site"; // "@/" means "start from the project root"
 import RailNav from "@/components/RailNav";
 import ThemeToggle from "@/components/ThemeToggle";
+import Link from "next/link"; // Next.js link component
 
 export default function Rail() {
   return (
@@ -10,9 +11,9 @@ export default function Rail() {
     // border-r border-line = the hairline on the right edge
     <aside className="fixed inset-y-0 left-0 z-40 flex w-[var(--rail-w)] flex-col items-center border-r border-line bg-ink/40 py-6 backdrop-blur-md">
       {/* Monogram at the top. "#top" scrolls back to the top of the page. */}
-      <a href="#top" className="font-mono text-sm font-medium tracking-wider text-bone">
+      <Link href="/#top" className="font-mono text-sm font-medium tracking-wider text-bone">
         {site.monogram}
-      </a>
+      </Link>
 
       {/* my-auto pushes the numbers to the vertical middle of the rail */}
       {/* The numbers, with the active-section highlight (see RailNav.tsx) */}

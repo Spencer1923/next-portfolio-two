@@ -13,11 +13,22 @@ const iconProps = {
   "aria-hidden": true,
 };
 
+let fadeTimer: number | undefined; // remembers the timer so quick double clicks don't clash
+
 export default function ThemeToggle() {
   function toggle() {
-    // Read the current theme straight from the <html> tag, flip it, and remember it
-    const next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
-    document.documentElement.dataset.theme = next;
+    const root = document.documentElement;
+    const next = root.dataset.theme === "light" ? "dark" : "light";
+
+    // Turn on the fade, unless the visitor asked for less motion
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduce) {
+      root.classList.add("theme-fade");
+      window.clearTimeout(fadeTimer);
+      fadeTimer = window.setTimeout(() => root.classList.remove("theme-fade"), 300); // 300 = a bit longer than the 250ms fade
+    }
+
+    root.dataset.theme = next; // the actual switch
     try {
       localStorage.setItem("theme", next); // remembered for the next visit
     } catch {
