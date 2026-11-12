@@ -52,7 +52,7 @@ export default function Experience() {
               </h3>
 
               {/* Highlight bullets. They brighten when u hover the entry. */}
-              <ul className="mt-4 space-y-2 text-muted transition-colors duration-200 group-hover:text-bone/80">
+              <ul className="mt-4 space-y-2 text-sm text-muted transition-colors duration-200 group-hover:text-bone/80 md:text-base">
                 {job.bullets.map((bullet, i) => (
                   <li key={i} className="flex gap-3">
                     <span aria-hidden="true">—</span>

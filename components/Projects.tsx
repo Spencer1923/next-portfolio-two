@@ -73,7 +73,7 @@ export default function Projects() {
               </div>
 
               <h3 className="text-2xl text-bone">{project.name}</h3>
-              <p className="mt-2 max-w-xl text-muted">{project.description}</p>
+              <p className="mt-2 max-w-xl text-sm text-muted md:text-base">{project.description}</p>
 
               {/* Tech tags */}
               <ul className="mt-4 flex flex-wrap gap-2">

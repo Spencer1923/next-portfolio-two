@@ -1,7 +1,6 @@
 import Section from "@/components/Section";
 import { site } from "@/lib/site";
 
-
 export default function About() {
   return (
     // Section gives us the "01 / ABOUT" header and the page spacing
@@ -9,7 +8,7 @@ export default function About() {
       {/* Stacked on phones and tablets. From 1024px (lg) up: two columns, bio a bit wider */}
       <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
         {/* Left: bio paragraphs. space-y-6 = gap between paragraphs. text-bone/80 = bone color at 80%. */}
-        <div className="max-w-2xl space-y-6 text-lg leading-relaxed text-bone/80">
+        <div className="max-w-2xl space-y-6 text-sm leading-relaxed text-bone/80 md:text-lg">
           {site.about.paragraphs.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
