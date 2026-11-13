@@ -35,8 +35,9 @@ export const metadata: Metadata = {
   verification: { google: "MxqQo_I354HviOaO2gJHTOzCGOPBMYgXHhYT23KmmrU" },
 };
 
-// Runs before the page appears: if the visitor picked light last time, switch to it immediately (prevents a dark flash)
-const themeScript = `try{if(localStorage.getItem("theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}`;
+// Runs before the page appears. Uses the visitor's saved choice if they have one,
+// otherwise their device setting (light or dark), so there's no flash of the wrong theme.
+const themeScript = `try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";document.documentElement.dataset.theme=t}catch(e){}`;
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>

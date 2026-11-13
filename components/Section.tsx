@@ -25,7 +25,7 @@ export default function Section({ id, children }: Props) {
   return (
     // mx-auto + max-w-7xl = centered column, max 1280px wide
     // py-24 md:py-32 = vertical space (change these numbers for tighter or looser sections)
-    <section id={id} className="mx-auto w-full max-w-7xl px-6 py-24 md:px-10 md:py-32">
+    <section id={id} className="mx-auto w-full max-w-7xl px-6 py-28 md:px-10 md:py-40">
       {/* Header row: label, then the line, then the index */}
       <div ref={headerRef} className="flex items-center gap-4 font-mono text-base uppercase tracking-wider text-label">
         {/* 1. Label: hidden until in view, then scrambles */}
