@@ -1,6 +1,6 @@
 "use client"; // needs the browser for animations
 
-import { Fragment, useRef, useState } from "react";
+import { Fragment } from "react";
 import { useScramble } from "@/lib/useScramble"; // the same scramble effect as the rail and Copy button
 import { motion, useReducedMotion } from "framer-motion";
 import { site } from "@/lib/site";
@@ -11,11 +11,11 @@ export default function Hero() {
   // true if the visitor asked their device for less motion (we skip animations for them)
   const reduce = useReducedMotion();
 
-  const nameRef = useRef<HTMLSpanElement>(null); // points at the name so we can measure it
-  const [nameHover, setNameHover] = useState(false); // true while the mouse is on the name
-  const [nameWidth, setNameWidth] = useState<number | undefined>(undefined); // the name's normal width, saved during hover
-  const nameText = useScramble(site.name, nameHover, 900); // 900 = scramble speed in ms
+  // true = start scrambling as soon as the page loads. 1800 = how long it takes to settle, in ms.
+  const nameText = useScramble(site.name, true, 1800, 30); // 1800 = total time, 50 = ms between letter changes
 
+  const nameWords = site.name.split(" "); // the real name, one word at a time
+  const scrambledWords = nameText.split(" "); // the scrambled version, split the same way (the hook keeps spaces in place, so the words line up)
   // Split the headline into words so each one can animate separately
   const words = site.hero.statement.split(" ");
 
@@ -30,24 +30,23 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }} // end fully visible in place
         transition={{ duration: 0.6, ease: "easeOut" }}>
         {/* clamp(min, flexible, max): 2.5rem (40px) on phones, grows with screen width, stops at 4rem (64px) */}
-        <h1 className="text-[clamp(2.5rem,6vw,4rem)] font-medium leading-none tracking-tight text-bone">
-          {/* inline-block = the hover area is only as wide as the name, not the whole row */}
-          <span
-            ref={nameRef}
-            className="inline-block"
-            // minWidth = while scrambling, never get narrower than the real name (the letters have different widths)
-            style={{ minWidth: nameWidth }}
-            onPointerEnter={(e) => {
-              if (e.pointerType !== "mouse") return; // mouse only
-              setNameWidth(nameRef.current?.offsetWidth); // remember the normal width
-              setNameHover(true);
-            }}
-            onPointerLeave={() => {
-              setNameHover(false);
-              setNameWidth(undefined);
-            }}>
-            {nameText}
-          </span>
+        <h1
+          aria-label={site.name} // screen readers read your real name, not the scramble
+          className="text-[clamp(2.5rem,6vw,4rem)] font-medium leading-none tracking-tight text-bone">
+          {nameWords.map((word, i) => (
+            <Fragment key={i}>
+              {/* One word. The invisible real word sets the size, so layout never changes.
+                  whitespace-nowrap = the word never splits across lines. */}
+              <span className="relative inline-block whitespace-nowrap">
+                <span className="invisible">{word}</span>
+                {/* The scrambling version sits exactly on top and can't push anything around */}
+                <span aria-hidden="true" className="absolute left-0 top-0 whitespace-nowrap">
+                  {scrambledWords[i]}
+                </span>
+              </span>
+              {i < nameWords.length - 1 && " "} {/* a normal space between words, the only place a line can break */}
+            </Fragment>
+          ))}
         </h1>
         <p className="mt-4 font-mono text-xs uppercase tracking-wider text-muted">{site.hero.role}</p>
       </motion.div>
