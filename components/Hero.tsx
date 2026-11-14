@@ -12,7 +12,7 @@ export default function Hero() {
   const reduce = useReducedMotion();
 
   // true = start scrambling as soon as the page loads. 1800 = how long it takes to settle, in ms.
-  const nameText = useScramble(site.name, true, 1800, 30); // 1800 = total time, 50 = ms between letter changes
+  const nameText = useScramble(site.name, true, 1800, 15); // 1800 = total time, 50 = ms between letter changes
 
   const nameWords = site.name.split(" "); // the real name, one word at a time
   const scrambledWords = nameText.split(" "); // the scrambled version, split the same way (the hook keeps spaces in place, so the words line up)
